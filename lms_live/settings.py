@@ -39,6 +39,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # Third party apps
+    'django_celery_beat',
+    'django_celery_results', 
+    'startsubapp',
+
+    # My Apps
+    'apps.accounts',
+    'apps.courses',
+    'apps.tasks'
 ]
 
 MIDDLEWARE = [
