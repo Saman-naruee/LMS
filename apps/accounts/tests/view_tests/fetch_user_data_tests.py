@@ -9,6 +9,5 @@ class FetchUserInfos(BaseViewTestClass):
         self.client = APIClient()
 
     def test_fetch_users_data(self):
-        # Changed self.user_url to self.users_url as defined in BaseViewTestClass
         response = self.client.get(self.users_url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
