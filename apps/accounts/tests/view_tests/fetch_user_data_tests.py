@@ -5,7 +5,7 @@ from apps.accounts.tests.view_tests.base_view_tests import BaseViewTestClass
 
 class FetchUserInfos(BaseViewTestClass):
     def setUp(self):
-        super().setUp()  # Call the parent class's setUp method
+        super().setUp()
         self.client = APIClient()
 
     def test_fetch_users_data(self):
