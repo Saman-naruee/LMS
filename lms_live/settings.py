@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # Third party apps
+    'rest_framework',
     'django_celery_beat',
     'django_celery_results', 
     'startsubapp',
@@ -48,7 +49,9 @@ INSTALLED_APPS = [
     # My Apps
     'apps.accounts',
     'apps.courses',
-    'apps.tasks'
+    'apps.infras', 
+    'apps.notifications', 
+    'apps.quiz'
 ]
 
 MIDDLEWARE = [
