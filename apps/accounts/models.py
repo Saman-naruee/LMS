@@ -19,7 +19,10 @@ class User(AbstractUser):
         help_text='Specific permissions for this user.'
     )
 
-    phone_number = models.IntegerField()
+    phone_number = models.CharField(
+        max_length=12, 
+        # validators=
+    )
     
     # Profile information
     date_of_birth = models.DateField(null=True, blank=True)

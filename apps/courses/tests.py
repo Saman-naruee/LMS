@@ -4,18 +4,13 @@ from apps.accounts.models import User # Import the User model
 from django.urls import reverse
 from datetime import datetime
 from django.utils import timezone
+from apps.infras.tests.base_view_tests import BaseViewTestClass
 
 
-class CourseCreateTest(TestCase):
+class CourseCreateTest(BaseViewTestClass):
     def setUp(self):
         self.url = reverse('create-course')
-        # Provide a phone_number when creating the user
-        self.user = User.objects.create_user(
-            username='testuser', 
-            email='test@example.com', 
-            password='password',
-            phone_number=1234567890
-        )
+        self.user = self.regular_user
         print(self.user.id)
     def test_create_course_returns_201(self):
         start_date = timezone.make_aware(datetime(2025, 1, 1, 9, 0, 0))

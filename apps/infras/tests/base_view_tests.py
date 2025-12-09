@@ -2,26 +2,42 @@ from rest_framework import status
 from django.urls import reverse
 from rest_framework.test import APIClient, APITestCase
 from apps.accounts.models import User
+from django.test.testcases import TestCase
 
 
 
-class BaseViewTestClass(APITestCase):
+class BaseViewTestClass(APIClient, APITestCase, TestCase):
+    """
+    Docstring for BaseViewTestClass
+    
+    Base test class Inherits from `APIClient`, `APITestCase`, `TestCase`
+    """
+
     @classmethod
     def setUpTestData(cls):
         cls.password = "TestPass123!"
         cls.admin_user = cls._create_user(
+            username='adminuser',
+            password='SoMerand0mP@ssfoRadmin',
             email="admin@example.com",
+            phone_number = '09933004562',
             is_superuser=True,
             is_staff=True,
             is_active=True,
         )
         cls.staff_user = cls._create_user(
+            username='staffuser',
+            password='SoMerand0mP@ssfoRstaff',
             email="staff@example.com",
+            phone_number = '09933004565',
             is_staff=True,
             is_active=True,
         )
         cls.regular_user = cls._create_user(
+            username='regularuser',
+            password='SoMerand0mP@ssfoRregular',
             email="user@example.com",
+            phone_number = '09933004566',
             is_active=True,
         )
 
@@ -29,7 +45,8 @@ class BaseViewTestClass(APITestCase):
     def _create_user(cls, email, is_superuser=False, is_staff=False, is_active=True, **extra):
         user = User(email=email, is_superuser=is_superuser, is_staff=is_staff, is_active=is_active, **extra)
         try:
-            user.set_password(cls.password)
+            if not user.password:
+                user.set_password(cls.password)
         except Exception:
             pass
         user.save()
