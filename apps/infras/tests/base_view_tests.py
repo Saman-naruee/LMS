@@ -3,7 +3,7 @@ from django.urls import reverse
 from rest_framework.test import APIClient, APITestCase
 from apps.accounts.models import User
 from django.test.testcases import TestCase
-
+from infras.constants.accounts.urls_constants import ACCOUNT_USERS_LIST, ACCOUNTS_USERS_DETAIL
 
 
 class BaseViewTestClass(APIClient, APITestCase, TestCase):
@@ -54,7 +54,7 @@ class BaseViewTestClass(APIClient, APITestCase, TestCase):
 
     def setUp(self):
         self.client = APIClient()
-        self.users_url = reverse('users-list')
+        self.users_url = reverse(ACCOUNT_USERS_LIST)
         self.users = User.objects.all()
 
     # Authentication helpers
@@ -75,7 +75,7 @@ class BaseViewTestClass(APIClient, APITestCase, TestCase):
 
     # URL helpers
     def user_detail_url(self, pk):
-        return reverse('users-detail', args=[pk])
+        return reverse(ACCOUNTS_USERS_DETAIL, args=[pk])
 
     # Request helpers
     def get(self, url, params=None, **kwargs):
