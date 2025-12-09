@@ -4,7 +4,7 @@ from apps.accounts.models import User # Import the User model
 from django.urls import reverse
 from datetime import datetime
 from django.utils import timezone
-from apps.infras.tests.base_view_tests import BaseViewTestClass
+from apps.infras.tests.base_tests import BaseViewTestClass
 
 
 class CourseCreateTest(BaseViewTestClass):

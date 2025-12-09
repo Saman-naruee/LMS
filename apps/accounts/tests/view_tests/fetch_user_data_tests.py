@@ -1,7 +1,7 @@
 from rest_framework import status
 from rest_framework.test import APIClient
 from apps.accounts.models import User
-from apps.infras.tests.base_view_tests import BaseViewTestClass
+from apps.infras.tests.base_tests import BaseViewTestClass
 from custom_logger import custom_logger as print
 
 
