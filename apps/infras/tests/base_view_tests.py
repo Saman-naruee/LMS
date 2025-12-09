@@ -6,7 +6,7 @@ from django.test.testcases import TestCase
 from infras.constants.accounts.urls_constants import ACCOUNT_USERS_LIST, ACCOUNTS_USERS_DETAIL
 
 
-class BaseViewTestClass(APIClient, APITestCase, TestCase):
+class BaseViewTestClass(APITestCase):
     """
     Docstring for BaseViewTestClass
     
