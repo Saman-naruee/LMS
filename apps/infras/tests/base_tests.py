@@ -3,7 +3,7 @@ from django.urls import reverse
 from rest_framework.test import APIClient, APITestCase
 from apps.accounts.models import User
 from django.test.testcases import TestCase
-from infras.constants.accounts.urls_constants import ACCOUNT_USERS_LIST, ACCOUNTS_USERS_DETAIL
+from apps.infras.constants.accounts.urls_constants import ACCOUNT_USERS_LIST, ACCOUNTS_USERS_DETAIL
 
 
 class BaseViewTestClass(APITestCase):
