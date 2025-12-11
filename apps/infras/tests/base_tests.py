@@ -9,9 +9,16 @@ from custom_logger import custom_logger
 
 class BaseViewTestClass(APITestCase):
     """
-    Docstring for BaseViewTestClass
-    
-    Base test class Inherits from `APIClient`, `APITestCase`, `TestCase`
+    BaseViewTestClass provides a foundation for API view tests.
+    It sets up test data with admin, staff, and regular users.
+    The class offers authentication helpers, URL utilities, and request wrappers.
+    Assertion methods for common HTTP status checks are included.
+    Convenience methods for CRUD operations on the user endpoint are provided.
+
+    Some helper methods:
+    - authenticate_as_admin(): Authenticate the test client as the admin user.
+    - logout(): Log out the test client.
+    - refresh(instance): Refresh a model instance from the database.
     """
 
     @classmethod
@@ -44,6 +51,10 @@ class BaseViewTestClass(APITestCase):
 
     @classmethod
     def _create_user(cls, email, is_superuser=False, is_staff=False, is_active=True, **extra):
+        """
+        Creates a User with the given email and flags,
+        sets password if missing, saves, and returns the user.
+        """
         user = User(email=email, is_superuser=is_superuser, is_staff=is_staff, is_active=is_active, **extra)
         try:
             if not user.password:
