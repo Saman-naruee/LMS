@@ -1,9 +1,10 @@
 from rest_framework import status
-from django.urls import reverse
 from rest_framework.test import APIClient, APITestCase
+from django.urls import reverse
 from apps.accounts.models import User
 from django.test.testcases import TestCase
 from apps.infras.constants.accounts.urls_constants import ACCOUNT_USERS_LIST, ACCOUNTS_USERS_DETAIL
+from custom_logger import custom_logger
 
 
 class BaseViewTestClass(APITestCase):
@@ -56,6 +57,7 @@ class BaseViewTestClass(APITestCase):
         self.client = APIClient()
         self.users_url = reverse(ACCOUNT_USERS_LIST)
         self.users = User.objects.all()
+        print(self.users)
 
     # Authentication helpers
     def authenticate(self, user):
